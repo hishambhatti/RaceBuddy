@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+#if canImport(UIKit)
+    import UIKit
+#endif
+import CoreLocation
+import HealthKit
+import MapKit
 
 @main
 struct RaceBuddyApp: App {
+    @StateObject private var runTrackerViewModel = RunTrackerViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RunTrackerView().environmentObject(runTrackerViewModel)
         }
     }
 }
